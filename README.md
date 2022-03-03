@@ -15,7 +15,7 @@ Properties or `Item Asset` Fields to simplify items search. It may be extended w
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Item
+  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
@@ -23,8 +23,8 @@ Properties or `Item Asset` Fields to simplify items search. It may be extended w
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| hsi:wavelength_min   | \[number]                 | Min center wavelength of the item, in micrometers (μm) |
-| hsi:wavelength_max   | \[number]                 | Min center wavelength of the item, in micrometers (μm) |
+| hsi:wavelength_min   | \[number]                 | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
+| hsi:wavelength_max   | \[number]                 | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
 
 ## Contributing
 

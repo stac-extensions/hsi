@@ -1,19 +1,80 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/hsi/v1.0.0/schema.json",
-  "title": "Layer Extension",
-  "description": "STAC Layer Item Extension Spec",
-  "allOf": [
+  "$id": "https://stac-extensions.github.io/hsi/v1.0.0/schema.json#",
+  "title": "Hyperspectral Extension",
+  "description": "STAC HSI Extension for STAC Items and STAC Collections.",
+  "oneOf": [
     {
-      "$ref": "#/definitions/hsi"
+      "$comment": "This is the schema for STAC Items. Remove this object if this extension only applies to Collections.",
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "type",
+            "properties"
+          ],
+          "properties": {
+            "type": {
+              "const": "Feature"
+            },
+            "properties": {
+              "allOf": [
+                {
+                  "$comment": "Require fields here for item properties.",
+                  "required": [
+                    "hsi:wavelength_min",
+                    "hsi:wavelength_max"
+                  ]
+                },
+                {
+                  "$ref": "#/definitions/fields"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ]
+    },
+    {
+      "$comment": "This is the schema for STAC Collections. Remove this object if this extension does not define top-level fields for Collections AND can't be used in collection assets or item asset defintions.",
+      "allOf": [
+        {
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "Collection"
+            },
+            "assets": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/fields"
+              }
+            },
+            "item_assets": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/fields"
+              }
+            }
+          }
+        },
+        {
+          "$ref": "#/definitions/stac_extensions"
+        }
+      ]
     }
   ],
   "definitions": {
-    "hsi": {
+    "stac_extensions": {
       "type": "object",
       "required": [
-        "stac_extensions",
-        "properties"
+        "stac_extensions"
       ],
       "properties": {
         "stac_extensions": {
@@ -21,25 +82,28 @@
           "contains": {
             "const": "https://stac-extensions.github.io/hsi/v1.0.0/schema.json"
           }
-        },
-        "properties": {
-          "type": "object",
-          "required": [
-            "hsi:wavelength_min",
-            "hsi:wavelength_max"
-          ],
-          "properties": {
-            "hsi:wavelength_min": {
-              "title": "Min center wavelength",
-              "type": "number"
-            },
-            "hsi:wavelength_max": {
-              "title": "Max center wavelength",
-              "type": "number"
-            }
-          }
         }
       }
+    },
+    "fields": {
+      "$comment": "Add your new fields here. Don't require them here, do that above in the item schema.",
+      "type": "object",
+      "properties": {
+        "hsi:wavelength_min": {
+          "title": "Min center wavelength",
+          "type": "number"
+        },
+        "hsi:wavelength_max": {
+          "title": "Max center wavelength",
+          "type": "number"
+        }
+      },
+      "patternProperties": {
+        "^(?!hsi:)": {
+          "$comment": "Above, change `hsi` to the prefix of this extension"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
