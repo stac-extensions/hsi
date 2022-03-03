@@ -1,14 +1,17 @@
-# Template Extension Specification
+# Hyperspectral Imagery Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
+- **Title:** Hyperspectral Imagery
+- **Identifier:** [https://stac-extensions.github.io/hsi/v1.0.0/schema.json](https://stac-extensions.github.io/hsi/v1.0.0/schema.json)
+- **Field Name Prefix:** hsi
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @pomadchin
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the fields of the Hyperspectral Imagery Extension to a [STAC Item](https://github.com/radiantearth/stac-spec/tree/v1.0.0/item-spec). 
+Items wavelengths information is an important metadata to preserve. 
+Hyperspectral Imagery Extension adds `hsi:wavelength_min` and `hsi:wavelength_max` `Collection / Item` 
+Properties or `Item Asset` Fields to simplify items search. It may be extended with the 
+[Electro-Optical Extension Specification](https://github.com/stac-extensions/eo) which handles bands spectral description.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
@@ -16,38 +19,12 @@ This is the place to add a short introduction.
 - [JSON Schema](json-schema/schema.json)
 - [Changelog](./CHANGELOG.md)
 
-## Item Properties and Collection Fields
+## Item Properties or Asset Fields
 
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field... |
-| template:another_one | \[number]                 | Describe the field... |
-
-### Additional Field Information
-
-#### template:new_field
-
-This is a much more detailed description of the field `template:new_field`...
-
-### XYZ Object
-
-This is the introduction for the purpose and the content of the XYZ Object...
-
-| Field Name  | Type   | Description |
-| ----------- | ------ | ----------- |
-| x           | number | **REQUIRED**. Describe the required field... |
-| y           | number | **REQUIRED**. Describe the required field... |
-| z           | number | **REQUIRED**. Describe the required field... |
-
-## Relation types
-
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
-
-| Type                | Description |
-| ------------------- | ----------- |
-| fancy-rel-type      | This link points to a fancy resource. |
+| hsi:wavelength_min   | \[number]                 | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
+| hsi:wavelength_max   | \[number]                 | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
 
 ## Contributing
 
