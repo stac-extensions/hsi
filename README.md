@@ -24,7 +24,7 @@ Properties or `Item Asset` Fields to simplify items search. It may be extended w
 | Field Name           | Type                      | Description |
 | -------------------- | ------------------------- | ----------- |
 | hsi:wavelength_min   | \[number]                 | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
-| hsi:wavelength_max   | \[number]                 | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
+| hsi:wavelength_max   | \[number]                 | **REQUIRED**. Max center wavelength of the item, in micrometers (μm) |
 
 ## Contributing
 
