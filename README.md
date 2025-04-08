@@ -5,7 +5,7 @@
 - **Field Name Prefix:** hsi
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @pomadchin
+- **Owner**: None
 
 This document explains the fields of the Hyperspectral Imagery Extension to a [STAC Item](https://github.com/radiantearth/stac-spec/tree/v1.0.0/item-spec).
 Items wavelengths information is an important metadata to preserve.
@@ -21,10 +21,28 @@ Properties or `Item Asset` Fields to simplify items search. It may be extended w
 
 ## Item Properties or Asset Fields
 
-| Field Name           | Type                      | Description |
-| -------------------- | ------------------------- | ----------- |
-| hsi:wavelength_min   | \[number]                 | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
-| hsi:wavelength_max   | \[number]                 | **REQUIRED**. Max center wavelength of the item, in micrometers (μm) |
+| Field Name         | Type      | Description                                                          |
+| ------------------ | --------- | -------------------------------------------------------------------- |
+| hsi:wavelength_min | \[number] | **REQUIRED**. Min center wavelength of the item, in micrometers (μm) |
+| hsi:wavelength_max | \[number] | **REQUIRED**. Max center wavelength of the item, in micrometers (μm) |
+
+## Media Types
+
+This section describes the recommended media types to use for various hyperspectral
+image formats.
+
+| Name                          | Media Type                                               | Notes              |
+| ----------------------------- | -------------------------------------------------------- | ------------------ |
+| GeoTIFF                       | image/tiff; application=geotiff                          |                    |
+| Cloud-optimized GeoTIFF (COG) | image/tiff; application=geotiff; profile=cloud-optimized |                    |
+| HDF                           | application/x-hdf                                        |                    |
+| HDF5                          | application/x-hdf5                                       |                    |
+| NetCDF                        | application/netcdf                                       |                    |
+| Zarr                          | application/vnd.zarr                                     |                    |
+| ENVI Data                     | application/vnd.nv5.envi-data                            | New recommendation |
+| ENVI Header                   | application/vnd.nv5.envi-header                          | New recommendation |
+
+Many of these media types are defined in the [PySTAC](https://pystac.readthedocs.io/) module [pystac.media_type](https://pystac.readthedocs.io/en/stable/api/media_type.html).
 
 ## Contributing
 
