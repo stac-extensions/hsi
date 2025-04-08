@@ -5,7 +5,7 @@
 - **Field Name Prefix:** hsi
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: None
+- **Owner**: @pomadchin
 
 This document explains the fields of the Hyperspectral Imagery Extension to a [STAC Item](https://github.com/radiantearth/stac-spec/tree/v1.0.0/item-spec).
 Items wavelengths information is an important metadata to preserve.
