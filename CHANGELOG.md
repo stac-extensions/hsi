@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add HSI extension initial description [#1](https://github.com/pomadchin/hsi/pull/1)
+- Add media type recommendations
+- Add HSI extension initial description
 
 ### Changed
 
